@@ -29,6 +29,12 @@ app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/blogs', blogsRouter);
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }
+}))
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
